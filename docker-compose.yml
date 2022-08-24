@@ -13,11 +13,11 @@ services:
   postgres:
     image: postgres:12.2
     ports:
-      - 5432:5432
+      - '5432:5432'
     environment:
-      - POSTGRES_DB=${DB_DATABASE}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=oauth_playground
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret1234
     volumes:
       - sail-postgres:/var/lib/postgresql/data
 volumes:
