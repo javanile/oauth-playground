@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  oauth-playground:
+    build: .
+    image: javanile/webrequest
+    env_file:
+      - .env
+    ports:
+      - '8080:80'
+    volumes:
+      - ./:/var/www/html
+  postgres:
+    image: postgres:12.2
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - sail-postgres:/var/lib/postgresql/data
+volumes:
+  sail-postgres:
+    driver: local
